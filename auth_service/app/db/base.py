@@ -4,4 +4,8 @@
 декларация, без самих моделей.
 """
 
-# TODO: class Base(DeclarativeBase): ...
+from sqlalchemy.orm import DeclarativeBase
+
+
+class Base(DeclarativeBase):
+    """Общий предок всех ORM-моделей; хранит реестр таблиц (metadata)."""
