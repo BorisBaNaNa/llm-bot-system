@@ -1,0 +1,44 @@
+# Секреты и окружение
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Базы данных SQLite
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+
+# Виртуальные окружения и uv
+.venv/
+venv/
+uv.lock
+requirements.lock
+
+# Тесты и кэши линтеров
+.pytest_cache/
+.coverage
+.ruff_cache/
+.mypy_cache/
+
+# IDE и ОС
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+logs/
