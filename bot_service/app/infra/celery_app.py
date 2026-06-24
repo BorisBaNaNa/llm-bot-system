@@ -6,4 +6,17 @@ app.tasks.llm_tasks, чтобы задача llm_request не падала с Ke
 нет.
 """
 
-# TODO: celery_app = Celery(...); broker/backend; регистрация tasks.
+from celery import Celery
+
+from app.core.config import settings
+
+# broker - RabbitMQ (куда кладём задачи), backend - Redis (где забираем результат).
+# include импортирует модуль задач при старте воркера: так llm_request попадает в
+# реестр и не падает с KeyError, а циклического импорта при создании приложения нет
+# (llm_tasks сам импортирует celery_app).
+celery_app = Celery(
+    "bot_service",
+    broker=settings.rabbitmq_url,
+    backend=settings.redis_url,
+    include=["app.tasks.llm_tasks"],
+)
